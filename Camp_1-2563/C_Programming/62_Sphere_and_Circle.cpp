@@ -2,8 +2,8 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * LANG		: C++
- * TASK		: 
- * EDITOR	: VsCode
+ * TASK		: Template
+ * EDITOR	: gVim
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -12,7 +12,12 @@ using namespace std;
 #define int long long
 
 void solution(){
-	
+	double r;
+	scanf("%lf", &r);
+	printf("%.3lf\n", acos(-1)*r*r*4);
+	printf("%.3lf\n", acos(-1)*r*r*r*4/3);
+	printf("%.3lf\n", acos(-1)*r*r);
+	printf("%.3lf", acos(-1)*2*r);
 	return ;
 }
 

@@ -2,7 +2,7 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * LANG		: C++
- * TASK		: 
+ * TASK		: Intro04
  * EDITOR	: VsCode
  * */
 #include<bits/stdc++.h>
@@ -12,7 +12,10 @@ using namespace std;
 #define int long long
 
 void solution(){
-	
+	double d, r, t, v;
+//	cin >> d >> r >> t >> v;
+	scanf("%lf %lf %lf %lf", &d, &r, &t, &v);
+	printf("%.2lf\n", d*v/(t-r));
 	return ;
 }
 

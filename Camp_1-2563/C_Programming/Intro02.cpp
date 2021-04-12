@@ -2,7 +2,7 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * LANG		: C++
- * TASK		: 
+ * TASK		: template
  * EDITOR	: VsCode
  * */
 #include<bits/stdc++.h>
@@ -12,7 +12,10 @@ using namespace std;
 #define int long long
 
 void solution(){
-	
+	char a, b;
+	scanf(" %c %c", &a, &b);
+	printf("%c\n", isupper(a) ? tolower(a) : toupper(a));
+	printf("%c\n", isupper(b) ? tolower(b) : toupper(b));
 	return ;
 }
 
