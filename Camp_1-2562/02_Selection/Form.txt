@@ -1,0 +1,11 @@
+#include<stdio.h>
+/*
+		TASK: 
+		AUTHOR: Ice
+		SCHOOL: RYW
+		LANG: C
+*/
+int main (){
+	
+	return 0;
+}
