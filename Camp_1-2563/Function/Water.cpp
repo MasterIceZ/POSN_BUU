@@ -27,10 +27,11 @@ void rec(int state, int sum){
 }
 
 int32_t main(){
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+//	ios::sync_with_stdio(0);
+//	cin.tie(0);
 
-	cin >> n >> t;
+//	cin >> n >> t;
+	scanf("%d %d", &n, &t);
 	for(int i=1; i<=6; ++i){
 		cin >> a[i];
 	}
@@ -38,9 +39,11 @@ int32_t main(){
 	cout << cnt << "\nE\n";
 	for(int i=0; i<cnt; ++i){
 		for(int j=0; j<=ans[i][0]; ++j){
-			cout << ans[i][j] << " " ;
+//			cout << ans[i][j] << " " ;
+			printf("%d", ans[i][j]);
 		}
-		cout << "\nE" << endl;
+//		cout << "\nE" << endl;
+		printf("\nE\n");
 	}
 	return 0;
 }

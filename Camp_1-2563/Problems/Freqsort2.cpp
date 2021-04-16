@@ -2,36 +2,37 @@
 using namespace std;
 
 struct A{
-	int cnt=0, idx, val;
+	int val, idx, cnt;
 	bool operator < (const A& o) const{
 		if(cnt != o.cnt){
 			return cnt > o.cnt;
 		}
-		return val < o.val;
+		return idx < o.idx;
 	}
 };
 
 int32_t main(){
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-
+	map<int, int> freq, idx;
 	int n, c, x;
 	cin >> n >> c;
-
-	vector<A>v(c+1);
-	for(int i=0; i<=c; ++i){
-		v[i].val = i;
-	}
-	for(int i=0; i<n; ++i){
+	for(int i=1;i<=n;++i){
 		cin >> x;
-		v[x].cnt++;
+		freq[x]++;
+		if(idx[x] == 0){
+			idx[x] = i;
+		}
+	}
+	vector<A>v;
+	for(auto a : freq){
+		v.push_back({a.first, idx[a.first], freq[a.first]});
 	}
 	sort(v.begin(), v.end());
-	for(int i=0; i<=c; ++i){
-		if(v[i].cnt!=0){
-			while(v[i].cnt--){
-				cout << v[i].val << " ";
-			}
+	for(auto f: v){
+		while(f.cnt--){
+			cout << f.val << " ";
+	
 		}
 	}
 	cout << endl;
