@@ -22,7 +22,9 @@ void solve(){
 	else if(tmp == 2){
 		k = (s[0] - '0') * 10 + s[1] - '0';
 	}
-	
+	else if(tmp == 0){
+		k = (s[0]-'0')*100+(s[1]-'0')*10+(s[2]-'0');
+	}
 	if(k!=0){
 		v.push_back(k);
 	}
@@ -35,7 +37,7 @@ void solve(){
 	int sum = 0;
 	for(auto x : v){
 		sum += x;
-		cout << x << endl;
+//		cout << x << endl;
 	}
 	if(sum % 7 == 0){
 		ch = true;
