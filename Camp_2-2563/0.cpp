@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		:
+ * ALGO		:
  * DATE		:
  * */
 #include<bits/stdc++.h>

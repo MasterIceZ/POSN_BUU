@@ -16,11 +16,14 @@ using namespace std;
 using LL = long long;
 
 int n, m;
-int a[33][33];
-
+char a[33][33];
+bool visited[33][33];
+int layer[33][33];
 const int di[] = {-1, 0, 0, 1}, dj[] = {0, -1, 1, 0};
 
 void solve(){
+	memset(visited, false, sizeof visited);
+	memset(layer, -1, sizeof layer);
 	int t;
 	cin >> n >> m >> t;
 	pair<int, int> start, stop;
@@ -31,23 +34,45 @@ void solve(){
 	}	
 	cin >> start.first >> start.second >> stop.first >> stop.second;
 	queue<pair<int, int>> q;
+	set<pair<int, int>>s;
 	q.emplace(start);
+	layer[start.first][start.second] = 0;
 	while(!q.empty()){
 		auto now = q.front();
 		q.pop();
+//		cerr << "pop~\n";
+//		if(q.empty()){
+//			cerr << "empty!\n";
+//		}
 		if(visited[now.first][now.second]){
 			continue;
 		}
-		if(now == stop){
-			break;
-		}
+		visited[now.first][now.second] = true;
 		for(int k=0; k<4; ++k){
 			int ii = now.first + di[k];
 			int jj = now.second + dj[k];
-
+			if(ii < 1 || jj < 1 || ii > n || jj > m){
+				continue;
+			}
+			if(a[ii][jj] != '#' && !visited[ii][jj]){
+				q.emplace(ii, jj);
+				layer[ii][jj] = layer[now.first][now.second]+1;
+				s.emplace(ii, jj);
+			}
 		}
 	}
-	cout << cnt;
+//	cerr << "size : "<< s.size() << endl;
+//	cout << (layer[stop.first][stop.second]<=t?layer[stop.first][stop.second]:-1);
+	if(layer[stop.first][stop.second] > t || layer[stop.first][stop.second] == -1){
+		cout << -1;
+		return;
+	}
+	int le = t - layer[stop.first][stop.second];
+	le = min(le/2 + layer[stop.first][stop.second], (int)s.size());
+//	cout << "left : " << le << endl;
+//	cout << "size : " << s.size() << endl;
+//	cout << layer[stop.first][stop.second] + le + 1;
+	cout << le +1;
 	return ;
 }
 
