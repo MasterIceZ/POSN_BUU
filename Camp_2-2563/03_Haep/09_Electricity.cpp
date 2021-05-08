@@ -2,8 +2,8 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * DATE		:
+ * TASK		: Electricity
+ * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -17,7 +17,23 @@ using LL = long long;
 int n, m;
 
 void solve(){
-	
+	int k;
+	cin >> n >> k;
+	vector<int>v(n);
+	for(auto& x: v){
+		cin >> x;
+	}	
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+	pq.emplace(v[0], 0);
+	int ans = 0;
+	for(int i=1; i<n; ++i){
+		while(!pq.empty() && i - pq.top().second > k){
+			pq.pop();
+		}
+		ans = pq.top().first + v[i];
+		pq.emplace(ans, i);
+	}
+	cout << ans;
 	return ;
 }
 

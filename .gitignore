@@ -1,2 +1,6 @@
 *.exe
-
+lecture
+.vscode
+*.png
+*.jpg
+*.pdf
