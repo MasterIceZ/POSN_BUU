@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: BST Travel 2
+ * ALGO		: Depth First Search
  * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>

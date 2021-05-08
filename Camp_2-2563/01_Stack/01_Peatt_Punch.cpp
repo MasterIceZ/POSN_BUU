@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: Peatt Punch
+ * ALGO		: Stack
  * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>

@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: PT_Brackets
+ * ALGO		: Heap
  * DATE		: 7 May 2021
  * */
 #include<bits/stdc++.h>

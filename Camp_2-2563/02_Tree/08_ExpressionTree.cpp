@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: Expression Tree
+ * ALGO		: Depth First Search + Expression Tree
  * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>

@@ -2,8 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * DATE		:
+ * TASK		: Bipartite
+ * ALGO		: Depth First Search
+ * DATE		: 8 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;

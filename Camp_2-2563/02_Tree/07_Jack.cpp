@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: Jack
+ * ALGO		: Depth First Search
  * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>

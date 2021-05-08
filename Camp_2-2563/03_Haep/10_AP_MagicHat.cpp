@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: AP_Magic Hat 
+ * ALGO		: Heap
  * DATE		: 6 May 2021
  * */
 #include<bits/stdc++.h>

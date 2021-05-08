@@ -3,6 +3,7 @@
  * SCHOOL	: RYW
  * CENTER	: BUU
  * TASK		: Candle
+ * ALGO		: Breadth First Search
  * DATE		: 7 May 2021
  * */
 #include<bits/stdc++.h>
