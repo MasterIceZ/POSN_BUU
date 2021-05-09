@@ -1,6 +1,8 @@
 *.exe
-lecture
+Lecture
+Tasks
 .vscode
 *.png
 *.jpg
 *.pdf
+*.zip
