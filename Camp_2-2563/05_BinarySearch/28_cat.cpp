@@ -2,7 +2,7 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		: PN_Stupid
+ * TASK		: Cat TOI13
  * ALGO		: Binary Search
  * DATE		: 9 May 2021
  * */
@@ -18,38 +18,44 @@ using LL = long long;
 int n, m;
 
 void solve(){
-//	int s, p;
-	LL s, p;
-	cin >> s >> p;
-//	int l, r;
-	LL l, r;
-//	l = 1;
-//	r = (s+1)/2;
-	l = 0, r = s/2;
-	bool mark = false;
-	while(l <= r){
-//		int mid = (l + r) / 2;
-		LL mid = (l+r)/2;
-		if(mid * (s - mid) > p || mid * (s-mid)/(s-mid) != mid){
-			r = mid - 1;
+	cin >> n;
+	vector<int>a(n);
+	for(auto &x: a){
+		cin >> x;
+	}	
+	int l = 0, r = 1e18;
+	while(l < r){
+		int mid = (l + r) / 2;
+		stack<int>st;
+		bool ch = false;
+		for(int i=0; i<n; ++i){
+			if(a[i] > mid){
+				if(st.empty()){
+					st.push(a[i]);
+				}
+				else if(st.top() == a[i]){
+					st.pop();
+				}
+				else{
+					ch = true;
+				}
+			}
 		}
-		else if(mid * (s - mid) < p){
-			l = mid + 1;
+		if(st.empty() && !ch){
+			r = mid;
 		}
 		else{
-			cout << min(mid, s-mid) << " " << max(mid, s-mid);
-			return ;
-			break;
+			l = mid + 1;
 		}
 	}
-	cout << "No answer";
+	cout << l ;
 	return ;
 }
 
 int32_t main(){
 	cin.tie(nullptr)->ios::sync_with_stdio(false);
 	int t=1;
-	cin >> t;
+//	cin >> t;
 	while(t--){
 		solve();
 		cout << endl;
