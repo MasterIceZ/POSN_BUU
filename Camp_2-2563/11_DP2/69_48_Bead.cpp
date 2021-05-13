@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: 48_Bead
+ * ALGO		: Dynamic Programming
+ * DATE		: 11 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -14,29 +14,31 @@ using namespace std;
 #define endl '\n'
 #define int long long
 using LL = long long;
-void init();
+
 int n, m;
+int a[111];
+int dp[111][111];
 
 void solve(){
+	priority_queue<int>q;
+	cin >> n;
+	for(int i=0, x; i<n; ++i){
+		cin >> x;
+		q.push(x);
+	}
 	
 	return ;
 }
 
 int32_t main(){
-	init();
+	cin.tie(nullptr)->ios::sync_with_stdio(false);
 	int t=1;
-//	cin >> t;
+	cin >> t;
 	while(t--){
 		solve();
 		cout << endl;
+		memset(dp, 0, sizeof dp);
+		memset(a, 0, sizeof a);
 	}
 	return 0;
-}
-void init(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	#endif
-	return ;
 }

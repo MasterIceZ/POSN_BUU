@@ -32,11 +32,11 @@ int32_t main(){
 	}
 	return 0;
 }
+
 void init(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
+	cin.tie(nullptr)->ios_base::sync_with_stdio(false);
 	#ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 	#endif
-	return ;
 }

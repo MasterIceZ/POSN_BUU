@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		: Map
- * ALGO		: Depth First Search
- * DATE		: 7 May 2021
+ * TASK		: Test
+ * ALGO		: Implement
+ * DATE		: 13 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -14,21 +14,29 @@ using namespace std;
 #define endl '\n'
 #define int long long
 using LL = long long;
-
+void init();
 int n, m;
 
 void solve(){
-	
+	cout << "hello world";
 	return ;
 }
 
 int32_t main(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
+	init();
 	int t=1;
-//	cin >> t;
+	cin >> t;
 	while(t--){
 		solve();
 		cout << endl;
 	}
 	return 0;
+}
+void init(){
+	cin.tie(nullptr)->ios::sync_with_stdio(false);
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+	#endif
+	return ;
 }

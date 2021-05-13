@@ -2,7 +2,7 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
+ * TASK		: 
  * ALGO		:
  * DATE		:
  * */
