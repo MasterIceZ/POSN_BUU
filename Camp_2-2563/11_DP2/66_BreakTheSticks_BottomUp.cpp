@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Break the Sticks
+ * ALGO		: Dynamic Programming (Bottom Up)
+ * DATE		: 11 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -14,16 +14,21 @@ using namespace std;
 #define endl '\n'
 #define int long long
 using LL = long long;
-void init();
+
 int n, m;
+int a[55], dp[55][55];
 
 void solve(){
-	
+	int p;
+	cin >> n >> p;
+	for(int i=0; i<p; ++i){
+		cin >> a[i];
+	}	
 	return ;
 }
 
 int32_t main(){
-	init();
+	cin.tie(nullptr)->ios::sync_with_stdio(false);
 	int t=1;
 //	cin >> t;
 	while(t--){
@@ -31,12 +36,4 @@ int32_t main(){
 		cout << endl;
 	}
 	return 0;
-}
-void init(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifdef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	#endif
-	return ;
 }

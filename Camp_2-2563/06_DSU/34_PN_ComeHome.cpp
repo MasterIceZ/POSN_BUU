@@ -21,7 +21,7 @@ bool visited[300100];
 int par[300100];
 
 int root(int u){
-	return par[u]==u?u:par[u]=fr(par[u]);
+	return par[u]==u?u:par[u]=root(par[u]);
 }
 
 void solve(){
@@ -32,12 +32,29 @@ void solve(){
 	}
 	for(int i=1, a, b; i<=n; ++i){
 		cin >> a >> b;
+		bool ch = false;
 		int ra = root(a), rb = root(b);
-		if(!visited[ra]){
-			visited[ra] = true;
-			par[ra] = a;
-
+		if(!visited[a]){
+			visited[a] = true;
+			par[ra] = rb;
+			ch = true;
 		}
+		else if(!visited[b]){
+			visited[b] = true;
+			par[rb] = ra;
+			ch = true;
+		}
+		else if(!visited[ra]){
+			visited[ra] = true;
+			par[ra] = rb;
+			ch = true;
+		}
+		else if(!visited[rb]){
+			visited[rb] = true;
+			par[rb] = ra;
+			ch = true;
+		}
+		cout << (ch?"Yes":"No") << endl;
 	}
 	return ;
 }

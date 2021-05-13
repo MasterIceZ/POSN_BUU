@@ -14,7 +14,7 @@ using namespace std;
 #define endl '\n'
 #define int long long
 using LL = long long;
-void init();
+
 int n, m;
 
 void solve(){
@@ -23,7 +23,7 @@ void solve(){
 }
 
 int32_t main(){
-	init();
+	cin.tie(nullptr)->ios::sync_with_stdio(false);
 	int t=1;
 //	cin >> t;
 	while(t--){
@@ -31,12 +31,4 @@ int32_t main(){
 		cout << endl;
 	}
 	return 0;
-}
-void init(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifdef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	#endif
-	return ;
 }

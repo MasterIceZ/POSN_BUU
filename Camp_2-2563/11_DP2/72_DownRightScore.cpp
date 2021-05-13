@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Down Roght Score
+ * ALGO		: Dynamic Programmming
+ * DATE		: 11 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -14,16 +14,28 @@ using namespace std;
 #define endl '\n'
 #define int long long
 using LL = long long;
-void init();
+
 int n, m;
+int dp[255][255];
 
 void solve(){
-	
+	cin >> n >> m;
+	for(int i=1; i<=n; ++i){
+		for(int j=1; j<=m; ++j){
+			cin >> dp[i][j];
+		}
+	}
+	for(int i=1; i<=n; ++i){
+		for(int j=1; j<=m; ++j){
+			dp[i][j] += max(dp[i][j-1], dp[i-1][j]);
+		}
+	}
+	cout << dp[n][m];
 	return ;
 }
 
 int32_t main(){
-	init();
+	cin.tie(nullptr)->ios::sync_with_stdio(false);
 	int t=1;
 //	cin >> t;
 	while(t--){
@@ -31,12 +43,4 @@ int32_t main(){
 		cout << endl;
 	}
 	return 0;
-}
-void init(){
-	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifdef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	#endif
-	return ;
 }

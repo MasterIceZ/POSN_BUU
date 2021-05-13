@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		: Map
- * ALGO		: Depth First Search
- * DATE		: 7 May 2021
+ * TASK		: Medal TOI15
+ * ALGO		: Greedy
+ * DATE		: 11 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -18,7 +18,26 @@ using LL = long long;
 int n, m;
 
 void solve(){
-	
+	cin >> n;
+	vector<int>v(n), w(n);
+	for(auto& x: v){
+		cin >> x;
+	}
+	for(auto& x: w){
+		cin >> x;
+	}
+	sort(all(v));
+	sort(all(w), greater<int>());
+	vector<int>y;
+	for(int i=0; i<n; ++i){
+		y.push_back(v[i] + w[i]);
+	}
+	sort(all(y));
+	int ans = 0;
+	for(int i=1; i<n; ++i){
+		ans += y[i] - y[i-1];
+	}
+	cout << ans;
 	return ;
 }
 

@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Transitive Closure
+ * ALGO		: Floyd Warshall
+ * DATE		: 13 May 2021
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -16,9 +16,28 @@ using namespace std;
 using LL = long long;
 void init();
 int n, m;
+int dp[555][555];
 
 void solve(){
-	
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		for(int j=1; j<=n;++j){
+			cin >> dp[i][j];
+		}
+	}
+	for(int k=1; k<=n; ++k){
+		for(int i=1; i<=n; ++i){
+			for(int j=1; j<=n; ++j){
+				dp[i][j] |= dp[i][k] & dp[k][j];
+			}
+		}
+	}
+	for(int i=1; i<=n; ++i){
+		for(int j=1; j<=n;++j){
+			cout << dp[i][j] << " ";
+		}
+		cout << endl;
+	}
 	return ;
 }
 
