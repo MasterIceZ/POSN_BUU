@@ -2,7 +2,7 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		: 
+ * TASK		:
  * ALGO		:
  * DATE		:
  * */
@@ -34,7 +34,7 @@ int32_t main(){
 }
 void init(){
 	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifndef ONLINE_JUDGE
+	#ifdef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 	#endif

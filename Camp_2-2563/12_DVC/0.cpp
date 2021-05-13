@@ -2,9 +2,9 @@
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
  * CENTER	: BUU
- * TASK		: Test
- * ALGO		: Implement
- * DATE		: 13 May 2021
+ * TASK		:
+ * ALGO		:
+ * DATE		:
  * */
 #include<bits/stdc++.h>
 using namespace std;
@@ -18,14 +18,14 @@ void init();
 int n, m;
 
 void solve(){
-	cout << "hello world";
+	
 	return ;
 }
 
 int32_t main(){
 	init();
 	int t=1;
-	cin >> t;
+//	cin >> t;
 	while(t--){
 		solve();
 		cout << endl;
@@ -34,7 +34,7 @@ int32_t main(){
 }
 void init(){
 	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifndef ONLINE_JUDGE
+	#ifdef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 	#endif
