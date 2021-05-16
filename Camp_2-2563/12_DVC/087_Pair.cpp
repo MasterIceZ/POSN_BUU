@@ -18,39 +18,68 @@ void init();
 int n, m;
 
 pair<int, int> x[100100];
-int a[100100], 
+int a[100100], b[100100];
 double ans, dp[100100];
-int L[100100], R[100100];
+
+//void merge(int l, int mid, int r){
+//	int ll = mid - l + 1;
+//	int rr = r - mid;
+//	for(int i=0; i<ll; ++i){
+//		L[i] = a[i+l];
+//	}
+//	for(int i=0; i<rr; ++i){
+//		R[i] = a[mid+i+1];
+//	}
+//	memset(dp, 0, sizeof dp);
+//	for(int i=l; i<=r; ++i){
+//		dp[i] = dp[i-1] + a[i];
+//	}
+//	int i = 0, j = 0, k = l;
+//	while(i < ll && j < rr){
+//		if(L[i] <= R[j]){
+//			a[k++] = L[i++];
+//		}
+//		else{
+//			int aa = l + i;
+//			ans += (mid + 1  - aa) * a[mid + j + 1] + dp[mid] - dp[aa - 1];
+//			a[k++] = R[j++];
+//		}
+//	}
+//	while(i<ll){
+//		a[k++] = L[i++];
+//	}
+//	while(j<rr){
+//		a[k++] = R[j++];
+//	}
+//	return ;
+//}
+
+double qs[100100];
 
 void merge(int l, int mid, int r){
-	int ll = mid - l + 1;
-	int rr = r - mid;
-	for(int i=0; i<ll; ++i){
-		L[i] = a[i+l];
-	}
-	for(int i=0; i<rr; ++i){
-		R[i] = a[mid+i+1];
-	}
-	memset(dp, 0, sizeof dp);
+	int i = l, j = mid+1, k = l;
+//	memset(qs, 0, sizeof qs);
+	qs[l-1] = 0;
 	for(int i=l; i<=r; ++i){
-		dp[i] = dp[i-1] + a[i];
+		qs[i] = qs[i-1] + a[i]; 
 	}
-	int i = 0, j = 0, k = l;
-	while(i < ll && j < rr){
-		if(L[i] <= R[j]){
-			a[k++] = L[i++];
+	while(i <= mid && j <= r){
+		if(a[i] <= a[j]){
+			b[k++] = a[i++];
 		}
 		else{
-			int aa = l + i;
-			ans += (mid + 1  - aa) * a[mid + j + 1] + dp[mid] - dp[aa - 1];
-			a[k++] = R[j++];
+			ans += (mid + 1 - i) * a[j] + qs[mid] - qs[i - 1];
+			b[k++] = a[j++];
 		}
 	}
-	while(i<ll){
-		a[k++] = L[i++];
+	while(i <= mid){
+		b[k++] = a[i++];
 	}
-	while(j<rr){
-		a[k++] = R[j++];
+	while(j <= r){
+		b[k++] = a[j++];
+	}
+	for(int i=l; i<=r; ++i){
+		a[i] = b[i];
 	}
 	return ;
 }
