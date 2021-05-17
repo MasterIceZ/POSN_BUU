@@ -29,27 +29,27 @@ void mergesort(int l, int r){
 	mergesort(mid+1, r);
 	int i = l, j = mid+1, k = l;
 	while(i <= mid && j <= r){
-		if(a[i] < a[j]){
-			id[i] = idx[i];
+		if(a[i] <= a[j]){
+			id[k] = idx[i];
 			b[k] = a[i];
-			rr[id[i]] += mid - j + 1;			
+			rr[idx[i]] += j - mid - 1;			
 			++k, ++i;
 		}
 		else{
-			id[j] = idx[j];
+			id[k] = idx[j];
 			b[k] = a[j];
-			ll[id[j]] += mid - i + 1;
+			ll[idx[j]] += mid - i + 1;
 			++j, ++k;
 		}
 	}
 	while(i <= mid){
-		id[i] = idx[i];
+		id[k] = idx[i];
 		b[k] = a[i];
-		rr[id[i]] = r - mid;
+		rr[idx[i]] += r - mid;
 		++k, ++i ;
 	}
 	while(j <= r){
-		id[j] = idx[j];
+		id[k] = idx[j];
 		b[k++] = a[j++];
 	}
 	for(int x=l; x<=r; ++x){
@@ -67,7 +67,7 @@ void solve(){
 	}
 	mergesort(1, n);
 	int ans = 0;
-	for(int i=0; i<=n; ++i){
+	for(int i=1; i<=n; ++i){
 		ans += ll[i] * rr[i];
 	}
 	cout << ans;

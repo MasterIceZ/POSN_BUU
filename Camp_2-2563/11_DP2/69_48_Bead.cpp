@@ -17,16 +17,34 @@ using LL = long long;
 
 int n, m;
 int a[111];
-int dp[111][111];
+int dp[111][111][10];
+
+int divide(int l, int r){
+	if(l == r){
+		dp[l][r][1] = a[l];
+		return 0;
+	}
+	if(dp[l][r][1] != -1){
+		return dp[l][r][0];
+	}
+	int nin = INT_MAX;
+	for(int k=l; k<r; ++k){
+		int now = divide(l, k) + divide(k+1, r) + (dp[l][k][1] * dp[k+1][r][1]);
+		if(now < nin){
+			nin = now;
+			dp[l][r][1] = (dp[l][k][1] + dp[k+1][r][1])%100;
+		}
+	}
+	return dp[l][r][0] = nin;
+}
 
 void solve(){
-	priority_queue<int>q;
 	cin >> n;
-	for(int i=0, x; i<n; ++i){
-		cin >> x;
-		q.push(x);
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
 	}
-	
+	memset(dp, -1, sizeof dp);
+	cout << divide(1, n);
 	return ;
 }
 

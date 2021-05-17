@@ -12,13 +12,13 @@ using namespace std;
 #define dec(x,y) fixed << setprecision(y) << x   
 #define all(x) (x).begin(), (x).end()
 #define endl '\n'
-#define int long long
+//#define int long long
 using LL = long long;
 void init();
 int n, m;
 
 struct A{
-	int one, two, three, six=0;
+	int one, two, three, six;
 };
 int k;
 A mul(A a, A b){
@@ -26,13 +26,16 @@ A mul(A a, A b){
 	tmp.one = ((6 * a.six * b.six)%k + (3 * a.three * b.three)%k + (2 * a.two * b.two)%k + (a.one * b.one)%k)%k;
 	tmp.two = ((3 * a.three * b.six)%k + (3 * a.six * b.three)%k + (a.one * b.two)%k + (a.two * b.one))%k;
 	tmp.three = ((2 * a.two * b.six)%k + (a.one * b.three)%k + (2 * a.six * b.two) +(a.three * b.one))%k;
-	tmp.six = ((a.one * b.six)%k + (a.two * b.three)%k + (a.three * b.two)%k + (b.two * a.six)%k)%k;
+	tmp.six = ((a.one * b.six)%k + (a.two * b.three)%k + (a.three * b.two)%k + (a.six * b.one)%k)%k;
 	return tmp;
 }
 
 A divide(A a, int n){
 	if(n == 0){
 		return {1, 0, 0, 0};
+//		A k;
+//		k.one = 1, k.two = 0, k.three = 0, k.six = 0;
+//		return k;
 	}
 	A tmp = divide(a, n/2);
 	A t = mul(tmp, tmp);
@@ -45,7 +48,7 @@ A divide(A a, int n){
 void solve(){
 	A start;
 	cin >> start.one >> start.two >> start.three >> n >> k;
-	start.one %= k, start.two %= k, start.three %= k;
+	start.one %= k, start.two %= k, start.three %= k, start.six = 0;
    	A ans = divide(start, n);
 	cout << ans.one << " " << ans.two << " " << ans.three << " " << ans.six;
 	return ;
