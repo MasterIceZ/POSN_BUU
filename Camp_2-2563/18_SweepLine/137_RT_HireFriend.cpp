@@ -18,7 +18,22 @@ void init();
 int n, m;
 
 void solve(){
-	
+	cin >> n;
+	map<int, int>mp;
+	for(int i=0, s, e; i<n; ++i){
+		cin >> s >> e;
+		mp[s]++;
+		mp[e+1]--;
+	}	
+	int qs = 0, last = 0, ans = 0;
+	for(auto x: mp){
+		if(qs > 1){
+			ans += (qs-1) * (x.first - last);
+		}
+		qs += x.second;
+		last = x.first;
+	}
+	cout << ans;
 	return ;
 }
 

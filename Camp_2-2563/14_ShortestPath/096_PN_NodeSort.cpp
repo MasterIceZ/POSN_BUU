@@ -23,8 +23,8 @@ int in[50500];
 void solve(){
 	cin >> n >> m;
 	for(int i=0, u, v; i<m; ++i){
-		cin >> u >> v;
-		g[v].push_back(v);
+		cin >> v >> u;
+		g[u].push_back(v);
 		in[v]++;
 	}
 	priority_queue<int, vector<int>, greater<int>>pq;
@@ -33,13 +33,50 @@ void solve(){
 			pq.push(i);
 		}
 	}
-	bool ch = false;
 	vector<int>ans;
+	int tmp = -1;
+	bool check = false;
 	while(!pq.empty()){
-		if(pq.size() >= 2 && !ch){
-			
+		if(pq.size() >= 2){
+			int a = pq.top();
+			tmp = a;
+			check =true;
+		}
+		int now = pq.top();
+		pq.pop();
+		ans.push_back(now);
+		for(auto x: g[now]){
+			in[x]--;
+			if(!in[x]){
+				pq.push(x);
+			}
+		}
+	}	
+	if(ans.size() != n){
+		cout << "Never";
+	}
+	else if(check){
+		cout << "Different";
+		for(int i=0; i<ans.size(); ++i){
+			if(ans[i] == tmp){
+				swap(ans[i], ans[i+1]);
+				break;
+			}
+		}
+		for(auto x: ans){
+			cout << " " << x;
 		}
 	}
+	else{
+		cout << "Same";
+		for(auto x: ans){
+			cout << " " << x;
+		}
+	}
+	for(int i=0; i<=n; ++i){
+		g[i].clear();
+	}
+	
 	return ;
 }
 
