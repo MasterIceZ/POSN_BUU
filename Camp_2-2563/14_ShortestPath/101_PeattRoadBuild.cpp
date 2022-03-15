@@ -18,41 +18,37 @@ void init();
 int n, m;
 
 struct Node{
-	int v, w, id, nax;
+	int v, w;
 	bool operator < (const Node& o) const{
-		if(w != o.w){
-			return w > o.w;
-		}
-		return nax > o.nax;
+		return w > o.w;
 	}
 };
 
-vector<Node>adj[1010];
-int dist[1010][3];
-priority_queue<Node>pq;
+vector<Node>adj[10010];
+int dist[10010];
 
 void solve(){
 	cin >> n >> m;
-	for(int i=1, u, v, w; i<=m; ++i){
+	for(int i=0, u, v, w; i<m; ++i){
 		cin >> u >> v >> w;
-		adj[u].push_back({v, w, i});
-		adj[v].push_back({u, w, i});
+		adj[u].push_back({v, w});
+		adj[v].push_back({u, w});
 	}
 	memset(dist, 0x3f, sizeof dist);
-	pq.push({1, 0, 1, 0});
+	priority_queue<Node>pq;
+	pq.push({1, 0});
 	while(!pq.empty()){
 		Node now = pq.top();
 		pq.pop();
-		if(now.v == n && now.id == 0){
-			cout << now.nax << " " << now.w;
-			return ;
-		}
 		for(auto x: adj[now.v]){
-			if(dist[x.v][!now.id] >= x.w + now.w){
-				dist[x.v][!now.id] = x.w + now.w;
-				pq.push({x.v, x.w + now.w, !now.id, max(now.nax, x.id)});
+			if(dist[x.v] >= dist[now.v ] + now.w){
+				dist[x.v] = dist[now.v] + now.w;
+				pq.push({x.v, dist[now.w] + now.w});
 			}
 		}
+	}
+	for(int i=0; i<=n; ++i){
+		cout << dist[i] << " ";
 	}
 	return ;
 }
@@ -69,9 +65,9 @@ int32_t main(){
 }
 void init(){
 	cin.tie(nullptr)->ios::sync_with_stdio(false);
-	#ifdef ONLINE_JUDGE
+	#ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
-//	freopen("output.txt", "w", stdout);
+	freopen("output.txt", "w", stdout);
 	#endif
 	return ;
 }
