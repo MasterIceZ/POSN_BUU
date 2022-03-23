@@ -6,8 +6,8 @@ int n, m, ok, len;
 char a[33][33], s[120];
 int visited[33][33], mem[120][2];
 
-const int di[] = {-1, 0, 0, 1};
-const int dj[] = {0, -1, 1, 0};
+const int di[] = {0, 0, -1, 1};
+const int dj[] = {-1, 1, 0, 0};
 
 void walk(int i, int j, int state){
 	mem[state][0] = i;
@@ -17,7 +17,7 @@ void walk(int i, int j, int state){
 		for(int i=0; i<state; ++i){
 			printf("%d %d\n", mem[i][0], mem[i][1]);
 		}
-		ok = 1;
+		ok = 1; // ok -> ch
 		return ;
 	}
 	for(int k=0; k<4; ++k){

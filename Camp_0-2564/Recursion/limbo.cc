@@ -20,7 +20,7 @@ void walk(int i, int j){
 		if(a[ii][jj] != '*' || visited[ii][jj]){
 			continue;
 		}
-		visited[ii][jj] = true;
+//		visited[ii][jj] = true;
 		walk(ii, jj);
 	}
 }
