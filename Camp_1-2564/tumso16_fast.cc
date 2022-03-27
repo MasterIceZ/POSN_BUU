@@ -34,7 +34,7 @@ const int MxN = 10010;
 int n, m, timer;
 bitset<MxN> visited;
 vector<int> adj[MxN];
-int low[MxN], idx[MxN];
+int low[MxN], idx[MxN], deg[MxN];
 vector<pair<int, int>> bridge;
 
 void dfs(int u, int p = 0){
@@ -77,13 +77,43 @@ inline void solution(){
 		adj[u].push_back(v);
 		adj[v].push_back(u);
 		edges.emplace_back(u, v);
+		deg[u]++, deg[v]++;
 	}
 	find_bridge();
 	if(!bridge.size()){
 		cout << "OK!";
 		return ;
 	}
-	cout << bridge[0].first << " " << bridge[0].second;
+	visited = 0;
+	queue<int> q;
+	for(int i=1; i<=n; ++i){
+		if(deg[i] == 1){
+			q.emplace(i);
+			visited[i] = true;
+		}
+	}
+	while(!q.empty()){
+		int now = q.front();
+		dbg(now);
+		q.pop();
+		for(auto x: adj[now]){
+			if(visited[x]){
+				continue;
+			}
+			if(--deg[x] == 1){
+				q.emplace(x);
+				visited[x] = true;
+			}
+		}
+	}
+	sort(bridge.begin(), bridge.end());
+	for(auto x: bridge){
+		if(visited[x.first] ^ visited[x.second]){
+			dbg((bool) visited[x.first], (bool) visited[x.second]);
+			cout << x.first << " " << x.second ;
+			return ;
+		}
+	}
 	return ;
 }
 
