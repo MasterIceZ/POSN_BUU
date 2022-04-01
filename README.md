@@ -21,3 +21,7 @@ My code which I had written during POSN camp.
 
 ### Others
 - [x] MWIT Camp #2 2022
+
+### Settings
+gVim for windows  
+.vimrc is available [here](https://github.com/MasterIceZ/vim-scripts).
