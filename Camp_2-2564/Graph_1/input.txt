@@ -1,0 +1,14 @@
+2
+6
+AB
+AE
+BD
+BC
+CE
+DE
+
+4
+AB
+DA
+BC
+DC
