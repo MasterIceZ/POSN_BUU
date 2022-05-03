@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Medal
+ * ALGO		: Greedy, Sorting
+ * DATE		: 21 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,29 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 500050;
+ll a[MxN], b[MxN], c[MxN];
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+	}
+	for(int i=1; i<=n; ++i){
+		cin >> b[i];
+	}
+	sort(a + 1, a + n + 1);
+	sort(b + 1, b + n + 1, greater<ll>());
+	for(int i=1; i<=n; ++i){
+		c[i] = a[i] + b[i];
+	}
+	sort(c + 1, c + n + 1);
+	ll answer = 0;
+	for(int i=2; i<=n; ++i){
+		answer += c[i] - c[i - 1];
+	}
+	cout << answer;
 	return ;
 }
 

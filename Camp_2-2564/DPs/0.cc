@@ -34,7 +34,7 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 using ll = long long;
 
 inline void solution(){
-	trie
+
 	return ;
 }
 

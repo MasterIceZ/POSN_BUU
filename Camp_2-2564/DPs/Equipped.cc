@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Equipped
+ * ALGO		: Dynamic Programming, Bitmasks
+ * DATE		: 26 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,28 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+int dp[1 << 8];
+
 inline void solution(){
-	trie
+	int n, k, x, c;
+	cin >> n >> k;
+	memset(dp, 0x3f, sizeof dp);
+	dp[0] = 0;
+	for(int i=1; i<=n; ++i){
+		cin >> c;
+		int state = 0;
+		for(int j=0; j<k; ++j){
+			cin >> x;
+			if(!x){
+				continue;
+			}
+			state |= (1 << j);
+		}
+		for(int j=0; j<(1 << k); ++j){
+			dp[j | state] = min(dp[j | state], dp[j] + c);
+		}
+	}
+	cout << dp[(1 << k) - 1];
 	return ;
 }
 

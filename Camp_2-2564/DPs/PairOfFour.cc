@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Pair of Four
+ * ALGO		: Dynamic Programming
+ * DATE		: 22 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,35 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 1010;
+char a[MxN];
+int dp[MxN][MxN];
+
+int divide(int l, int r){
+	if(l == r){
+		return dp[l][r] = 0;
+	}
+	if(dp[l][r] != -1){
+		return dp[l][r];
+	}
+	if(a[l] == a[r]){
+		return dp[l][r] = 1 + divide(l + 1, r - 1);
+	}
+	int res = 0;
+	for(int k=l; k<r; ++k){
+		res = max(res, divide(l, k) + divide(k + 1, r));
+	}
+	return dp[l][r] = res;
+}
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+	}
+	memset(dp, -1, sizeof dp);
+	cout << divide(1, n);
 	return ;
 }
 

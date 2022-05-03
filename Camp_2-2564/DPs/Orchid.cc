@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Orchid
+ * ALGO		: Dynamic Programming
+ * DATE		: 22 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,21 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 1e6 + 10;
+int dp[MxN];
+
 inline void solution(){
-	trie
+	int n, sz = 0;
+	cin >> n;
+	for(int i=1, x; i<=n; ++i){
+		cin >> x;
+		int idx = upper_bound(dp, dp + sz, x) - dp;
+		dp[idx] = x;
+		if(idx == sz){
+			sz++;
+		}
+	}
+	cout << n - sz;
 	return ;
 }
 

@@ -1,14 +1,13 @@
 2
-6
-AB
-AE
-BD
-BC
-CE
-DE
+3 2
+1 U 5
+0 U 3
+4 L 2
+0 L 1
+5 U 2
 
-4
-AB
-DA
-BC
-DC
+1 5
+4 L 3
+2 L 0
+1 L 2
+0 L 4

@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Tarn Sequence
+ * ALGO		: Dynamic Programming
+ * DATE		: 20 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,44 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 100010;
+
+int a[MxN], dp[MxN];
+vector<int> mem[MxN];
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+	}
+	int sz = 0;
+	for(int i=1; i<=n; ++i){
+		int idx = lower_bound(dp, dp + sz, a[i]) -  dp;
+		if(idx == sz){
+			sz++;
+		}
+		dp[idx] = a[i];
+		mem[idx].emplace_back(a[i]);
+	}
+	cout << sz << "\n";
+	vector<int> answer;
+	answer.emplace_back(mem[sz - 1][0]);
+	int last = mem[sz - 1][0];
+	for(int i=sz-2; i>=0; --i){
+		for(auto x: mem[i]){
+			if(x < last){
+				last = x;
+				answer.emplace_back(last);
+				break;
+			}
+		}
+	}
+	reverse(answer.begin(), answer.end());
+	for(auto x: answer){
+		cout << x << " ";
+	}
+
 	return ;
 }
 

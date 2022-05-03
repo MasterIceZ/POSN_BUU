@@ -33,8 +33,46 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 100010;
+const int offset = 100000;
+ll a[MxN], l[2 * MxN], r[2 * MxN];
+
 inline void solution(){
-	trie
+	int n, middle;
+	ll k;
+	cin >> n >> k;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+		if(a[i] == k){
+			middle = i;
+		}
+	}
+	l[offset] = r[offset] = 1;
+	int current = 0;
+	for(int i=middle + 1; i<=n; ++i){
+		if(a[i] < k){
+			current--;
+		}
+		else{
+			current++;
+		}
+		l[current + offset]++;
+	}
+	current = 0;
+	for(int i=middle - 1; i>=1; --i){
+		if(a[i] < k){
+			current--;
+		}
+		else{
+			current++;
+		}
+		r[current + offset]++;
+	}
+	ll answer = 0ll;
+	for(int i=0; i<=2*offset; ++i){
+		answer += (l[i] * r[2 * offset - i]);
+	}
+	cout << answer;
 	return ;
 }
 

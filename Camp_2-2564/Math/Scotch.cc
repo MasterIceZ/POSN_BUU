@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Scotch
+ * ALGO		: ?
+ * DATE		: 22 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,38 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+ll cntA[3], cntB[3], cntAB[6];
+
 inline void solution(){
-	trie
+	int n, a, b;
+	cin >> n >> a >> b;
+	for(int i=1; i<=n; ++i){
+		if(i % (2 * a) <= a && i % (2 * a) != 0){
+			if(i % (2 * b) <= b && i % (2 * b) != 0){
+				cntA[0]++, cntB[0]++, cntAB[0]++;
+			}
+			else{
+				cntA[0]++, cntB[1]++, cntAB[1]++;
+			}
+		}
+		else{
+			if(i % (2 * b) <= b && i % (2 * b) != 0){
+				cntA[1]++, cntB[0]++, cntAB[2]++;
+			}
+			else{
+				cntA[1]++, cntB[1]++, cntAB[3]++;
+			}
+		}
+	}
+	ll res = 0ll;
+	for(int i=0; i<=1; ++i){
+		res += cntA[i] * cntA[i];
+		res += cntB[i] * cntB[i];
+	}
+	for(int i=0; i<=3; ++i){
+		res -= cntAB[i] * cntAB[i];
+	}
+	cout << res;
 	return ;
 }
 

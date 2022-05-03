@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Key
+ * ALGO		: Dynamic Programming
+ * DATE		: 20 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,35 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+string s, t;
+
+const int MxN = 1010;
+int dp[MxN][MxN];
+
 inline void solution(){
-	trie
+	string s, t, u;
+	cin >> s >> t;
+	int q, n = s.size(), m = t.size();
+	cin >> q;
+	while(q--){
+	memset(dp, 0, sizeof dp);
+		cin >> u;
+		dp[0][0] = 1;
+		for(int i=0; i<=n; ++i){
+			for(int j=0; j<=m; ++j){
+				if(!dp[i][j]){
+					continue;
+				}
+				if(i < n && s[i] == u[i + j]){
+					dp[i + 1][j] = 1;
+				}
+				if(j < m && t[j] == u[i + j]){
+					dp[i][j + 1] = 1;
+				}
+			}
+		}
+		cout << (dp[n][m] ? "Yes": "No") << "\n";
+	}
 	return ;
 }
 
@@ -44,7 +71,6 @@ signed main(){
 //	cin >> q;
 	while(q--){
 		solution();
-		cout << "\n";
 	}
 	return 0;
 }

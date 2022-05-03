@@ -33,8 +33,22 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 100010;
+
+int lis[MxN];
+
 inline void solution(){
-	trie
+	int n, sz = 0;
+	cin >> n;
+	for(int i=1, x; i<=n; ++i){
+		cin >> x;
+		int idx = lower_bound(lis, lis + sz, x) - lis;
+		if(idx == sz){
+			sz++;
+		}
+		lis[idx] = x;
+	}
+	cout << sz;
 	return ;
 }
 

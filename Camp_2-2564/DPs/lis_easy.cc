@@ -33,8 +33,40 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 1010;
+int a[MxN], from[MxN], to[MxN], keep[MxN], len[MxN];
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+		len[i] = 1;
+		from[i] = i;
+	}
+	for(int i=2; i<=n; ++i){
+		for(int j=1; j<i; ++j){
+			if(a[i] > a[j] && len[i] < len[j] + 1){
+				len[i] = len[j] + 1;
+				from[i] = j;
+			}
+		}
+	}
+	int maxx = 0, at = 0;
+	for(int i=1; i<=n; ++i){
+		if(len[i] > maxx){
+			maxx = len[i];
+			at = i;
+		}
+	}
+	cout << maxx << "\n";
+	for(int i=1; i<=n; ++i){
+		keep[i] = a[at];
+		at = from[at];
+	}
+	for(int i=maxx; i>=1; --i){
+		cout << keep[i] << " " ;
+	}
 	return ;
 }
 

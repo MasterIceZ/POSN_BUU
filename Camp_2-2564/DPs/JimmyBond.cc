@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Jimmy Bond
+ * ALGO		: Dynamic Programming, Bitmasks
+ * DATE		: 26 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,29 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 22;
+double a[MxN][MxN], dp[1 << 20];
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=0; i<n; ++i){
+		for(int j=0; j<n; ++j){
+			cin >> a[i][j];
+			a[i][j] /= 100.0;
+		}
+	}
+	dp[0] = 1.0;
+	for(int state=0; state<(1 << n); ++state){
+		int cnt = __builtin_popcount(state) - 1;
+		for(int i=0; i<n; ++i){
+			if(!(state & (1 << i))){
+				continue;
+			}
+			dp[state] = max(dp[state], dp[state ^ (1 << i)] * a[cnt][i]);
+		}
+	}
+	cout << fixed << setprecision(2) << 100 * dp[(1 << n) - 1];
 	return ;
 }
 

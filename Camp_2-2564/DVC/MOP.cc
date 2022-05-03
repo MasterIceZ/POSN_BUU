@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Mod of Power
+ * ALGO		: Implementation
+ * DATE		: 24 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,15 +33,31 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+ll c;
+
+ll mod(ll a, ll b){
+	if(b == 1){
+		return a % c;
+	}
+	ll t = mod(a, b >> 1);
+	ll res = (t * t) % c;
+	if(b & 1){
+		res = (a * res) % c;
+	}
+	return res;
+}
+
 inline void solution(){
-	trie
+	ll a, b;
+	cin >> a >> b >> c;
+	cout << mod(a, b);
 	return ;
 }
 
 signed main(){
 	cin.tie(nullptr)->ios::sync_with_stdio(false);	
 	int q = 1;
-//	cin >> q;
+	cin >> q;
 	while(q--){
 		solution();
 		cout << "\n";

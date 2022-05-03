@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Minimum in Array
+ * ALGO		: Divide and Conquer
+ * DATE		: 27 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,18 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+vector<int> v = {0, 5, 4, 2, 6, 1, 7, 5, 3};
+
+int divide(int l, int r){
+	if(l == r){
+		return v[l];
+	}
+	int mid = (l + r) >> 1;
+	return min(divide(l, mid), divide(mid + 1, r));
+}
+
 inline void solution(){
-	trie
+	cout << divide(1, (int) v.size() - 1);
 	return ;
 }
 

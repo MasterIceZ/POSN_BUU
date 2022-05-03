@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: 0/1 Knapsack
+ * ALGO		: Dynamic Programming
+ * DATE		: 20 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,19 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+int dp[110][10010];
+
 inline void solution(){
-	trie
+	int n, m;
+	cin >> n >> m;
+	for(int i=1, v, w; i<=n; ++i){
+		cin >> v >> w;
+		memcpy(dp[i], dp[i - 1], sizeof(dp[i - 1]));
+		for(int j=w; j<=m; ++j){
+			dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w] + v);
+		}
+	}
+	cout << dp[n][m];
 	return ;
 }
 

@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Tigger
+ * ALGO		: Dynamic Programming
+ * DATE		: 27 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,28 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+const int MxN = 1010;
+int n, a[MxN], dp[MxN][MxN];
+
+int divide(int u, int last){
+	if(u < 1 || u > n){
+		return 1e9 + 100;
+	}
+	if(dp[u][last]){
+		return dp[u][last];
+	}
+	if(u == n){
+		return a[u];
+	}
+	return dp[u][last] = a[u] + min(divide(u + last + 1, last + 1), divide(u - last, last));
+}
+
 inline void solution(){
-	trie
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i];
+	}
+	cout << divide(2, 1);
 	return ;
 }
 

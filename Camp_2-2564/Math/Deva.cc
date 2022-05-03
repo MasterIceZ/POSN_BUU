@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Deva Scales
+ * ALGO		: Math
+ * DATE		: 21 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -34,7 +34,21 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 using ll = long long;
 
 inline void solution(){
-	trie
+	int n, cnt = 0, sum = 0, v = 1;
+	cin >> n;
+	while(n){
+		int cur = n % 3;
+		n /= 3;
+		cnt += (cur != 0);
+		if(cur == 1){
+			sum += v;
+		}
+		else if(cur == 2){
+			n++;
+		}
+		v *= 3;
+	}
+	cout << cnt << " " << sum;
 	return ;
 }
 

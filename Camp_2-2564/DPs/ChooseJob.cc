@@ -1,9 +1,9 @@
 /*
  * AUTHOR	: Hydrolyzed~
  * SCHOOL	: RYW
- * TASK		:
- * ALGO		:
- * DATE		:
+ * TASK		: Choose Job
+ * ALGO		: Dynamic Programming
+ * DATE		: 21 Apr 2022
  * */
 
 #include <bits/stdc++.h>
@@ -33,8 +33,35 @@ template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_ta
 
 using ll = long long;
 
+struct Job{
+	int st, ed, w;
+	bool operator < (const Job& o) const {
+		if(ed != o.ed){
+			return ed < o.ed;
+		}
+		return st < o.st;
+	}
+};
+
+const int MxN = 1e5 + 10;
+Job a[MxN];
+int mem[MxN], dp[MxN];
+
 inline void solution(){
-	trie
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; ++i){
+		cin >> a[i].st >> a[i].ed >> a[i].w;
+	}
+	sort(a + 1, a + n + 1);
+	for(int i=1; i<=n; ++i){
+		mem[i] = a[i].ed;
+	}
+	for(int i=1; i<=n; ++i){
+		int idx = lower_bound(mem + 1, mem + n + 1, a[i].st) - (mem + 1);
+		dp[i] = max(dp[i - 1], dp[idx] + a[i].w);
+	}
+	cout << dp[n];
 	return ;
 }
 
