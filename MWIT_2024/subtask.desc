@@ -1,0 +1,4 @@
+(20) N <= 100000, Q <= 100 (BFS + DFS Per Query)
+(20) N <= 1000 (Pre Compute every pair)
+(10) Linear Tree With 1 rooted at the left (?)
+(50) N <= 100000, Q <= 1000000 (Full Sol, DFS Euler Tour)
